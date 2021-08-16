@@ -6,6 +6,6 @@
     <title>テスト</title>
   </head>
   <body>
-      <h1>テストです！</h1>
+      <h1>テストです☆</h1>
   </body>
 </html>
