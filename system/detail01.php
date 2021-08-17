@@ -7,9 +7,9 @@
     </head>
     <body>
         <?php
-                include("staticdatas.php");
-                include("DB_access.php");
-                include("header.html");
+                include("../include/staticdatas.php");
+                include("../include/DB_access.php");
+                include("../include/header.html");
                 ?>
         <table border="3" style="width:50%""border-collapse:collapse "border="0">
             <tr>

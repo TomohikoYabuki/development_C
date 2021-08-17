@@ -7,9 +7,9 @@
     </head>
     <body>
         <?php
-        include("staticdatas.php");
-        include("DB_access.php");
-        include("header.html");
+            include("../include/staticdatas.php");
+            include("../include/DB_access.php");
+            include("../include/header.html");
         ?>
         <br>
         <form method='post' action='index.php'>
