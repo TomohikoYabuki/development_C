@@ -6,32 +6,60 @@
     <title>石井担当</title>
     <!--確認ダイアログ表示-->
     <script type="text/javascript">
+    <!--
     function check(){
-    	if(window.confirm('更新を行います。よろしいですか？')){ // 確認ダイアログを表示
-    		return true; // 「OK」時は送信を実行
-    	}
-    	else{ // 「キャンセル」時の処理
-    		window.alert('キャンセルされました'); // 警告ダイアログを表示
-    		return false; // 送信を中止
-    	}
+        var name_flag=0;
+        var pref_flag=0;
+        var age_flag=0;
+        if(document.entryform.namae.value==""){
+            name_flag=1;
         }
+        else if(document.entryform.pref.value==""){
+            pref_flag=1;
+        }
+        else if(document.entryform.age.value==""){
+            age_flag=1;
+        }
+        if(name_flag==1){
+            window.alert('名前は必須です');
+            return false;
+        }
+        else if(pref_flag==1){
+            window.alert('都道府県は必須です');
+            return false;
+        }
+        else if(age_flag==1){
+            window.alert('年齢は必須です');
+            return false;
+        }
+        else{
+            if(window.confirm('更新を行います。よろしいですか？')){
+                location.href="index.php";//「OK」の場合はindex.phpに移動
+            }
+            else{
+                windows.alert('キャンセルされました');//警告ダイアログ
+                return false;//送信を中止
+            }
+        }
+    }
+    //-->
     </script>
   </head>
 
   <body>
       <!--部品インクルード-->
       <?php
-        include("staticdatas.php");
-        include("DB_access.php");
-        include("header.html");
+        include("../include/staticdatas.php");
+        include("../include/DB_access.php");
+        include("../include/header.html");
         ?>
       <!--入力フォーム-->
       <!--返すファイル注意-->
-      <form method='post' action='array.php' onSubmit="return check()">
+      <form method='post' action='index.php' name="entryform" onSubmit="return check()">
           <table border="1" style="border-collapse:collapse;">
               <tr>
                   <td>名前</td>
-                  <td><input type="text" name="namae" size="30" required="required"></td>
+                  <td><input type="text" name="namae" size="30"></td>
               </tr>
               <!--出身地入力フォームここから-->
               <tr>
@@ -142,9 +170,9 @@
               #$query_str = "INSERT INTO `member` (`member_ID`, `name`, `pref`, `seibetu`, `age`, `section_ID`, `grade_ID`) VALUES (NULL, '$name','$pref','$gender','$age', '$section','$grade');"; // 実行するSQL文を作成して変数に保持
 
               #echo $query_str;                                    // 実行するSQL文を画面に表示するだけ（デバッグプリント
-              $sql = $pdo->prepare($query_str);                   // PDOオブジェクトにSQLを渡す
-              $sql->execute();                                    // SQLを実行する
-              $result = $sql->fetchAll();
+              #$sql = $pdo->prepare($query_str);                   // PDOオブジェクトにSQLを渡す
+              #$sql->execute();                                    // SQLを実行する
+              #$result = $sql->fetchAll();
           ?>
       </form>
   </body>
