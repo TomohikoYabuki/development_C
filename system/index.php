@@ -39,6 +39,7 @@
                   echo "<td>" . $x['grade_name'] . "</td></tr>";
               }
           ?>
+          <!--ishii_test-->
       </table>
   </body>
 </html>
