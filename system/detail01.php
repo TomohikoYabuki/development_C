@@ -5,11 +5,27 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>情報詳細画面</title>
     </head>
+    <script type="text/javascript">
+        function goDel(id){
+            if(window.confirm('削徐を行います。よろしいですか？')){
+                location.href = "./delete01.php?member_ID=" + id;
+        }
+        }
+        function goEdit(id){
+            location.href = "./entry_update01.php?member_ID=" + id;
+        }
+    </script>
     <body>
         <?php
                 include("../include/staticdatas.php");
                 include("../include/DB_access.php");
                 include("../include/header.html");
+                ?>
+                <?php
+                    $DB_DSN = "mysql:host=localhost; dbname=sishii; charset=utf8";
+                    $DB_USER = "webaccess";
+                    $DB_PW = "toMeu4rH";
+                    $pdo = new PDO($DB_DSN, $DB_USER, $DB_PW);
                 ?>
         <table border="3" style="width:50%""border-collapse:collapse "border="0">
             <tr>
@@ -40,8 +56,8 @@
                 <th style="width:30%"bgcolor="#add8e6">役職</th>
                 <td></td>
         </table>
-        <a href="./entry_update01.php"> <input type=submit value=" 編集 "></a>
-        <a href="./index.php"> <input type=submit value=" 消去 "></a>
-
+        </div>
+            <a href="./entry_update01.php"> <input type=submit value=" 編集 "></a>
+            <input type="button" value="削除" onclick="goDel(1);">
     </body>
 </html>
