@@ -6,12 +6,12 @@
     <title>情報詳細画面</title>
     </head>
     <script type="text/javascript">
-        function goDel(id){
+        function goDel(ID){
             if(window.confirm('削徐を行います。よろしいですか？')){
                 location.href = "./delete01.php?member_ID=" + id;
         }
         }
-        function goEdit(id){
+        function goEdit(ID){
             location.href = "./entry_update01.php?member_ID=" + id;
         }
     </script>
@@ -58,6 +58,6 @@
         </table>
         </div>
             <a href="./entry_update01.php"> <input type=submit value=" 編集 "></a>
-            <input type="button" value="削除" onclick="goDel(1);">
+            <input type="button" value="削除" onclick="goDel(ID);">
     </body>
 </html>

@@ -62,29 +62,34 @@
 
         <!--テーブル-->
         <table border="3" style="border-collapse:collapse;">
-     <tr><th bgcolor='#add8e6'>社員ID</th><th bgcolor='#add8e6'>名前</th><th bgcolor='#add8e6'>部署</th><th bgcolor='#add8e6'>役職</th><th></tr>
+        <tr>
+            <th bgcolor='#add8e6'>社員ID</th>
+            <th bgcolor='#add8e6'>名前</th>
+            <th bgcolor='#add8e6'>部署</th>
+            <th bgcolor='#add8e6'>役職</th>
+        </tr>
         <!--php_DB-->
+
         <?php
             $where_str = "";
             $name = "";
             $gender = "";
             $section = "";
             $grade = "";
-
-            if (isset($_POST['namae']) && !empty($_POST['namae'])) {
-                $where_str .= " AND namae LIKE '%" . $_POST['namae'] . "%'";
+            if (isset($_GET['namae']) && !empty($_GET['namae'])) {
+                $where_str .= " AND namae LIKE '%" . $_GET['namae'] . "%'";
                 //$name = $_POST['namae'];
             }
-            if (isset($_POST['gender']) && !empty($_POST['gender'])) {
-                $where_str .= " AND gender = '" . $_POST['gender'] . "'";
+            if (isset($_GET['gender']) && !empty($_GET['gender'])) {
+                $where_str .= " AND gender = '" . $_GET['gender'] . "'";
                 //$gender = $_POST['gender'];
             }
-            if (isset($_POST['section']) && !empty($_POST['section'])) {
-                $where_str .= " AND section = '" . $_POST['section'] . "'";
+            if (isset($_GET['section']) && !empty($_GET['section'])) {
+                $where_str .= " AND section = '" . $_GET['section'] . "'";
                 //$gender = $_POST['section'];
             }
-            if (isset($_POST['grade']) && !empty($_POST['grade'])) {
-                $where_str .= " AND grade = '" . $_POST['grade'] . "'";
+            if (isset($_GET['grade']) && !empty($_GET['grade'])) {
+                $where_str .= " AND grade = '" . $_GET['grade'] . "'";
                 //$grade = $_POST['grade'];
             }
 
