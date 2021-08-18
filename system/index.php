@@ -11,35 +11,93 @@
             include("../include/DB_access.php");
             include("../include/header.html");
         ?>
-        <br>
+        <hr>
+        <!--フォーム-->
         <form method='post' action='index.php'>
-            名前:<input type="text" name="namae"><br>
-        <input type="submit" value="検索" />　
-        <input type="reset" value="リセットする" />
+            <table border="1" style="border-collapse:collapse;">
+                <!--名前検索フォーム-->
+                <tr>
+                    <td>名前</td>
+                    <td><input type="text" name="namae" size="30"></td>
+                </tr>
+                <!--性別検索フォーム-->
+                <tr>
+                    <td>性別</td>
+                    <td>
+                        <input type="radio" name="gender" value="1" checked>男
+                        <input type="radio" name="gender" value="2">女
+                    </td>
+                </tr>
+                <tr>
+                <!--部署検索フォーム-->
+                    <td>部署</td>
+                    <td>
+                        <select name="section">
+                            <option value="1">第一事業部</option>
+                            <option value="2">第二事業部</option>
+                            <option value="3">営業</option>
+                            <option value="4">総務</option>
+                            <option value="5">人事</option>
+                    </td>
+                </tr>
+                <!--役職検索フォーム-->
+                <tr>
+                    <td>役職</td>
+                    <td>
+                        <select name="grade">
+                        <option value="1">事業部長
+                        <option value="2">部長
+                        <option value="3">チームリーダー
+                        <option value="4">リーダー
+                        <option value="5">メンバー
+                    </td>
+                </tr>
+            </table>
+            <!--基本ボタン-->
+            <input type="submit" value="検索" />　
+            <input type="reset" value="リセットする" />
         </form>
-        <br>
-      <table border="3" style="border-collapse:collapse;">
-          <tr><th bgcolor='#add8e6'>社員ID</th><th bgcolor='#add8e6'>名前</th><th bgcolor='#add8e6'>部署</th><th bgcolor='#add8e6'>役職</th><th></tr>
-          <?php
-              $DB_DSN = "mysql:host=localhost; dbname=sishii; charset=utf8";
-              $DB_USER = "webaccess";
-              $DB_PW = "toMeu4rH";
-              $pdo = new PDO($DB_DSN, $DB_USER, $DB_PW);
+        <hr>
 
-              $query_str = "SELECT * FROM `member` LEFT JOIN grade_master ON grade_master.ID=member.grade_ID LEFT JOIN section1_master ON section1_master.ID=member.section_ID WHERE 1";
+        <!--テーブル-->
+        <table border="3" style="border-collapse:collapse;">
+     <tr><th bgcolor='#add8e6'>社員ID</th><th bgcolor='#add8e6'>名前</th><th bgcolor='#add8e6'>部署</th><th bgcolor='#add8e6'>役職</th><th></tr>
+        <!--php_DB-->
+        <?php
+            $where_str = "";
+            $name = "";
+            $gender = "";
+            $section = "";
+            $grade = "";
 
-              $sql = $pdo->prepare($query_str);
-              $sql->execute();
-              $result = $sql->fetchAll();
+            if (isset($_POST['namae'])) && !empty($_POST['namae'])) {
+                $where_str .= " AND namae LIKE '%" . $_POST['namae'] . "%'";
+                //$name = $_POST['namae'];
+            }
+            if (isset($_POST['gender'])) && !empty($_POST['gender'])) {
+                $where_str .= " AND gender = '" . $_POST['gender'] . "'";
+                //$gender = $_POST['gender'];
+            }
+            if (isset($_POST['section'])) && !empty($_POST['section'])) {
+                $where_str .= " AND section = '" . $_POST['section'] . "'";
+                //$gender = $_POST['section'];
+            }
+            if (isset($_POST['grade'])) && !empty($_POST['grade'])) {
+                $where_str .= " AND grade = '" . $_POST['grade'] . "'";
+                //$grade = $_POST['grade'];
+            }
 
-              foreach ($result as $x) {
-                  echo "<tr><td>" . $x['member_ID'] . "</td>";
-                  echo "<td>" . $x['name'] . "</td>";
-                  echo "<td>" . $x['section_name'] . "</td>";
-                  echo "<td>" . $x['grade_name'] . "</td></tr>";
-              }
-          ?>
+
+            $query_str = "SELECT * FROM member WHERE 1";
+
+            $query_str .= $where_str;
+
+            echo $query_str;
+            $sql = $pdo->prepare($query_str);
+            $sql->execute();
+            $result = $sql->fetchAll();
+        ?>
           <!--ishii_test-->
-      </table>
+        </table>
   </body>
 </html>
