@@ -45,6 +45,7 @@
                     <td>役職</td>
                     <td>
                         <select name="grade">
+                        <option hidden>選択してください
                         <option value="1">事業部長
                         <option value="2">部長
                         <option value="3">チームリーダー
@@ -70,19 +71,19 @@
             $section = "";
             $grade = "";
 
-            if (isset($_POST['namae'])) && !empty($_POST['namae'])) {
+            if (isset($_POST['namae']) && !empty($_POST['namae'])) {
                 $where_str .= " AND namae LIKE '%" . $_POST['namae'] . "%'";
                 //$name = $_POST['namae'];
             }
-            if (isset($_POST['gender'])) && !empty($_POST['gender'])) {
+            if (isset($_POST['gender']) && !empty($_POST['gender'])) {
                 $where_str .= " AND gender = '" . $_POST['gender'] . "'";
                 //$gender = $_POST['gender'];
             }
-            if (isset($_POST['section'])) && !empty($_POST['section'])) {
+            if (isset($_POST['section']) && !empty($_POST['section'])) {
                 $where_str .= " AND section = '" . $_POST['section'] . "'";
                 //$gender = $_POST['section'];
             }
-            if (isset($_POST['grade'])) && !empty($_POST['grade'])) {
+            if (isset($_POST['grade']) && !empty($_POST['grade'])) {
                 $where_str .= " AND grade = '" . $_POST['grade'] . "'";
                 //$grade = $_POST['grade'];
             }
