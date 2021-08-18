@@ -16,7 +16,7 @@
         ?>
       <!--入力フォーム-->
       <!--返すファイル注意-->
-      <form method='post' action='../include/add_data.php' name="entryform">
+      <form method='post' action='add_data.php' name="entryform">
           <table border="1" style="border-collapse:collapse;">
               <tr>
                   <th>名前</th>
@@ -82,8 +82,8 @@
               <tr>
                   <th>性別</th>
                   <td>
-                      <input type="radio" name="gender" value="1" checked>男
-                      <input type="radio" name="gender" value="2">女
+                      <label><input type="radio" name="gender" value="1" checked>男</label>
+                      <label><input type="radio" name="gender" value="2">女</label>
                   </td>
               </tr>
               <!--年齢入力フォーム-->
@@ -95,27 +95,29 @@
               <tr>
                   <th>所属部署</th>
                   <td>
-                      <input type="radio" name="section" value="1" checked>第一事業部
-                      <input type="radio" name="section" value="2">第二事業部
-                      <input type="radio" name="section" value="3">営業
-                      <input type="radio" name="section" value="4">総務
-                      <input type="radio" name="section" value="5">人事
+                      <label><input type="radio" name="section" value="1" checked>第一事業部</label>
+                      <label><input type="radio" name="section" value="2">第二事業部</label>
+                      <label><input type="radio" name="section" value="3">営業</label>
+                      <label><input type="radio" name="section" value="4">総務</label>
+                      <label><input type="radio" name="section" value="5">人事</label>
                   </td>
               </tr>
               <!--役職入力フォームここから-->
               <tr>
                   <th>役職</th>
                   <td>
-                      <input type="radio" name="grade" value="1" checked>事業部長
-                      <input type="radio" name="grade" value="2">部長
-                      <input type="radio" name="grade" value="3">チームリーダー
-                      <input type="radio" name="grade" value="4">リーダー
-                      <input type="radio" name="grade" value="5">メンバー
+                      <label><input type="radio" name="grade" value="1" checked>事業部長</label>
+                      <label><input type="radio" name="grade" value="2">部長</label>
+                      <label><input type="radio" name="grade" value="3">チームリーダー</label>
+                      <label><input type="radio" name="grade" value="4">リーダー</label>
+                      <label><input type="radio" name="grade" value="5">メンバー</label>
                   </td>
               </tr>
-          </table>
+          </table><br>
+
           <!--基本ボタン-->
           <div class="button">
+              <!--<input type="submit" value="submit">-->
               <input type="button" value="登録" onclick="check()">
               <input type="reset" value="リセット">
           </div>
