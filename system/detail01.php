@@ -6,12 +6,12 @@
     <title>情報詳細画面</title>
     </head>
     <script type="text/javascript">
-        function goDel(id){
+        function goDel(ID){
             if(window.confirm('削徐を行います。よろしいですか？')){
                 location.href = "./delete01.php?member_ID=" + id;
         }
         }
-        function goEdit(id){
+        function goEdit(ID){
             location.href = "./entry_update01.php?member_ID=" + id;
         }
     </script>
@@ -21,12 +21,8 @@
                 include("../include/DB_access.php");
                 include("../include/header.html");
                 ?>
-                <?php
-                    $DB_DSN = "mysql:host=localhost; dbname=sishii; charset=utf8";
-                    $DB_USER = "webaccess";
-                    $DB_PW = "toMeu4rH";
-                    $pdo = new PDO($DB_DSN, $DB_USER, $DB_PW);
-                ?>
+                $sql  = 'SELECT * FROM 'index.php'';
+        <form method='GET' action='add_data.php' name="entryform">
         <table border="3" style="width:50%""border-collapse:collapse "border="0">
             <tr>
                 <th style="width:30%"bgcolor="#add8e6">社員ID</th>
@@ -55,9 +51,12 @@
             <tr>
                 <th style="width:30%"bgcolor="#add8e6">役職</th>
                 <td></td>
+            </tr>
+        </form>
+            <?php
         </table>
         </div>
             <a href="./entry_update01.php"> <input type=submit value=" 編集 "></a>
-            <input type="button" value="削除" onclick="goDel(1);">
+            <input type="button" value="削除" onclick="goDel(ID);">
     </body>
 </html>
