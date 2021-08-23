@@ -9,10 +9,7 @@
         function goDel(ID){
             if(window.confirm('削徐を行います。よろしいですか？')){
                 location.href = "./delete01.php?member_ID=" + id;
-        }
-        }
-        function goEdit(ID){
-            location.href = "./entry_update01.php?member_ID=" + id;
+            }
         }
     </script>
     <body>
