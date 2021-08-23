@@ -5,7 +5,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>登録情報画面</title>
 
-    
   </head>
   <body>
       <?php
@@ -75,22 +74,15 @@
               $sql = $pdo->prepare($query_str_02);                // PDOオブジェクトにSQLを渡す
               $sql->execute();                                    // SQLを実行する
               $result = $sql->fetchAll();
+              foreach($result as $each){
+                  $id = $each['member_ID'];
+              }
+              header('Location:detail01.php?member_ID='.$id);
+              exit();
 
-              echo "<table>";
-
-            foreach($result as $each){
-                echo "<tr><th>社員ID</th><td>" . $each['member_ID'] . "</td></tr>";
-                echo "<tr><th>名前</th><td>" . $each['name'] . "</td></tr>";
-                echo "<tr><th>出身地</th><td>" . $pref_array[$pref] . "</td></tr>";
-                echo "<tr><th>性別</th><td>" . $gender_array[$gender] . "</td></tr>";
-                echo "<tr><th>年齢</th><td>" . $each['age'] . "</td></tr>";
-                echo "<tr><th>所属部署</th><td>" . $each['section_name'] . "</td></tr>";
-                echo "<tr><th>役職</th><td>" . $each['grade_name'] . "</td></tr>";
+            }else{
+                echo "新規登録に失敗しました。";
             }
-            echo "</table>";
-        }else{
-            echo "新規登録に失敗しました。";
-        }
       ?>
       <input type="button" value="登録" onclick="check()">
       <input type="reset" value="リセット">

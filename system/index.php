@@ -123,7 +123,7 @@
             }else{
                 foreach($result as $each){
                     echo "<tr><td>" . $each['member_ID'] . "</td>";
-                    echo "<td>" . $each['name'] . "</td>";
+                    echo "<td><a href='detail01.php?member_ID=" . $each['member_ID'] . "'>" . $each['name'] . "</a></td>";
                     echo "<td>" . $each['section_name'] . "</td>";
                     echo "<td>" . $each['grade_name'] . "</td></tr>";
                 }
