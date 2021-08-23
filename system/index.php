@@ -13,7 +13,7 @@
         ?>
         <hr>
         <!--フォーム-->
-        <form method='post' action='index.php'>
+        <form method='get' action='index.php'>
             <table border="1" style="border-collapse:collapse;">
                 <!--名前検索フォーム-->
                 <tr>
@@ -24,8 +24,10 @@
                 <tr>
                     <td>性別</td>
                     <td>
-                        <input type="radio" name="gender" value="1" checked>男
-                        <input type="radio" name="gender" value="2">女
+                        <select name="gender">
+                            <option value="0">すべて</option>
+                            <option value="1">男</option>
+                            <option value="2">女</
                     </td>
                 </tr>
                 <tr>
@@ -33,6 +35,7 @@
                     <td>部署</td>
                     <td>
                         <select name="section">
+                            <option value="0">すべて</option>
                             <option value="1">第一事業部</option>
                             <option value="2">第二事業部</option>
                             <option value="3">営業</option>
@@ -45,7 +48,7 @@
                     <td>役職</td>
                     <td>
                         <select name="grade">
-                        <option hidden>選択してください
+                        <option value="0">すべて
                         <option value="1">事業部長
                         <option value="2">部長
                         <option value="3">チームリーダー
@@ -55,7 +58,7 @@
                 </tr>
             </table>
             <!--基本ボタン-->
-            <input type="submit" value="検索" />　
+            <input type="submit" value="検索">　
             <input type="reset" value="リセットする" />
         </form>
         <hr>
@@ -71,39 +74,54 @@
         <!--php_DB-->
 
         <?php
+            $query_str="SELECT member.member_ID, member.name, member.seibetu, grade_master.grade_name, section1_master.section_name
+                        FROM member
+                        LEFT JOIN grade_master ON grade_master.ID = member.grade_ID
+                        LEFT JOIN section1_master ON section1_master.ID = member.section_ID
+                        WHERE 1=1";
+
             $where_str = "";
             $name = "";
             $gender = "";
             $section = "";
             $grade = "";
+
             if (isset($_GET['namae']) && !empty($_GET['namae'])) {
-                $where_str .= " AND namae LIKE '%" . $_GET['namae'] . "%'";
+                $where_str .= " AND member.name LIKE '%" . $_GET['namae'] . "%'";
                 //$name = $_POST['namae'];
             }
             if (isset($_GET['gender']) && !empty($_GET['gender'])) {
-                $where_str .= " AND gender = '" . $_GET['gender'] . "'";
+                $where_str .= " AND member.seibetu = '" . $_GET['gender'] . "'";
                 //$gender = $_POST['gender'];
             }
             if (isset($_GET['section']) && !empty($_GET['section'])) {
-                $where_str .= " AND section = '" . $_GET['section'] . "'";
+                $where_str .= " AND member.section_ID = '" . $_GET['section'] . "'";
                 //$gender = $_POST['section'];
             }
             if (isset($_GET['grade']) && !empty($_GET['grade'])) {
-                $where_str .= " AND grade = '" . $_GET['grade'] . "'";
+                $where_str .= " AND member.grade_ID = '" . $_GET['grade'] . "'";
                 //$grade = $_POST['grade'];
             }
 
-
-            $query_str = "SELECT * FROM member WHERE 1";
+            //$query_str = "SELECT * FROM member WHERE 1";
 
             $query_str .= $where_str;
 
-            echo $query_str;
+            //echo $query_str;
+
             $sql = $pdo->prepare($query_str);
             $sql->execute();
             $result = $sql->fetchAll();
+
+          foreach($result as $each){
+              echo "<tr><td>" . $each['member_ID'] . "</td>";
+              echo "<td>" . $each['name'] . "</td>";
+              echo "<td>" . $each['section_name'] . "</td>";
+              echo "<td>" . $each['grade_name'] . "</td></tr>";
+          }
+          echo "</table>";
         ?>
-          <!--ishii_test-->
+
         </table>
   </body>
 </html>
