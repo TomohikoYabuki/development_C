@@ -56,23 +56,14 @@
                         <option value="5">メンバー
                     </td>
                 </tr>
-            </table>
+            </table><br>
             <!--基本ボタン-->
             <input type="submit" value="検索">　
             <input type="reset" value="リセットする" />
         </form>
         <hr>
 
-        <!--テーブル-->
-        <table border="3" style="border-collapse:collapse;">
-        <tr>
-            <th bgcolor='#add8e6'>社員ID</th>
-            <th bgcolor='#add8e6'>名前</th>
-            <th bgcolor='#add8e6'>部署</th>
-            <th bgcolor='#add8e6'>役職</th>
-        </tr>
         <!--php_DB-->
-
         <?php
             $query_str="SELECT member.member_ID, member.name, member.seibetu, grade_master.grade_name, section1_master.section_name
                         FROM member
@@ -112,13 +103,31 @@
             $sql = $pdo->prepare($query_str);
             $sql->execute();
             $result = $sql->fetchAll();
+            //$count_res=0;
+            $count_res=count($result);
 
-          foreach($result as $each){
-              echo "<tr><td>" . $each['member_ID'] . "</td>";
-              echo "<td>" . $each['name'] . "</td>";
-              echo "<td>" . $each['section_name'] . "</td>";
-              echo "<td>" . $each['grade_name'] . "</td></tr>";
-          }
+            echo "検索結果：" . $count_res . "件";
+            ?>
+            <!--テーブル-->
+            <table border="3" style="border-collapse:collapse;">
+            <tr>
+                <th bgcolor='#add8e6'>社員ID</th>
+                <th bgcolor='#add8e6'>名前</th>
+                <th bgcolor='#add8e6'>部署</th>
+                <th bgcolor='#add8e6'>役職</th>
+            </tr>
+
+            <?php
+            if($count_res==0){
+                echo "<tr><td colspan='4' style='text-align: center;'>検索結果なし</td></tr>";
+            }else{
+                foreach($result as $each){
+                    echo "<tr><td>" . $each['member_ID'] . "</td>";
+                    echo "<td>" . $each['name'] . "</td>";
+                    echo "<td>" . $each['section_name'] . "</td>";
+                    echo "<td>" . $each['grade_name'] . "</td></tr>";
+                }
+            }
           echo "</table>";
         ?>
 
