@@ -68,5 +68,6 @@
         </pre>
         <a href="./detail01.php"> <input type=submit value=" 完了 "></a>
         <input type=reset value=" リセット ">
+        <input type="hidden" value="119" name="member_ID">
     </body>
 </html>
