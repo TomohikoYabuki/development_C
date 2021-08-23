@@ -4,14 +4,12 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>情報編集画面</title>
-        <script type="text/javascript">
-            function disp(){
+    <script type="text/javascript">
+            function disp(id){
             	if(window.confirm('編集を終了しますか？')){
-            		location.href = "detail01.php";
-            	}else{
-            		window.alert('キャンセルされました');
+            		document.updateform.submit();
             	}
-                }
+            }
         </script>
     </head>
 
@@ -25,24 +23,23 @@
         <?php
             $id = $_GET['member_ID'];
             //名前検索で詳細を表示
-            $query_str_02 = "SELECT member.member_ID, member.name, member.pref, member.seibetu, member.age, grade_master.grade_name, section1_master.section_name
-                             FROM member LEFT JOIN grade_master ON grade_master.ID = member.grade_ID
-                             LEFT JOIN section1_master ON section1_master.ID = member.section_ID
-                             WHERE member_ID = '$id'";
+            $query_str_02 = "SELECT * FROM member WHERE member_ID = '$id'";
             #echo $query_str_02;
             $sql = $pdo->prepare($query_str_02);                // PDOオブジェクトにSQLを渡す
             $sql->execute();                                    // SQLを実行する
             $result = $sql->fetchAll();
+
+            //$idから取得したデータを変数に格納
             foreach($result as $each){
                 $name = $each['name'];
                 $pref = $each['pref'];
                 $gender = $each['seibetu'];
                 $age = $each['age'];
-                $grade = $each['grade_name'];
-                $section = $each['section_name'];
+                $grade = $each['grade_ID'];
+                $section = $each['section_ID'];
             }
         ?>
-        <form method='post' action='update02.php'>
+        <form method='post' action='update02.php' name="updateform">
             <table border="1" style="border-collapse:collapse;">
                 <tr>
                     <th>社員ID</th>
@@ -58,7 +55,8 @@
                     <th>出身地</th>
                     <td>
                         <select name="pref">
-                            <option hidden value="0"><?php echo $pref_array[$pref];?></option>
+                            <!--初期値設定-->
+                            <option hidden value="<?php echo $pref;?>"><?php echo $pref_array[$pref];?></option>
                             <?php
                                 for($i=1; $i<=47; $i++){
                                     echo "<option value=". $i. ">" . $pref_array[$i] . "</option>";
@@ -71,9 +69,34 @@
                 <tr>
                     <th>性別</th>
                     <td>
-                        <label><input type="radio" name="gender" value="1" checked>男</label>
-                        <label><input type="radio" name="gender" value="2">女</label>
-                        
+                        <!--$genderが1だったら"男"に"checked"を出力する方法で初期値設定-->
+                        <label><input type="radio" name="gender" value="1"<?php if($gender==1){echo "checked";}?>>男</label>
+                        <label><input type="radio" name="gender" value="2"<?php if($gender==2){echo "checked";}?>>女</label>
+                    </td>
+                </tr>
+                <!--年齢-->
+                <tr>
+                    <th>年齢</th>
+                        <td><input type="number" name="age" value="<?php echo $age;?>" max="99" min="1" required> 才</td>
+                </tr>
+                <!--所属部署-->
+                <tr>
+                    <th>所属部署</th>
+                    <td><input type='radio' id='sec1' name='section' value='1'<?php if($section==1){echo "checked";}?>><label for='sec1'>第一事業部</label>
+                        <input type='radio' id='sec2' name='section' value='2'<?php if($section==2){echo "checked";}?>><label for='sec2'>第二事業部</label>
+                        <input type='radio' id='sec3' name='section' value='3'<?php if($section==3){echo "checked";}?>><label for='sec3'>営業</label>
+                        <input type='radio' id='sec4' name='section' value='4'<?php if($section==4){echo "checked";}?>><label for='sec4'>総務</label>
+                        <input type='radio' id='sec5' name='section' value='5'<?php if($section==5){echo "checked";}?>><label for='sec5'>人事</label>
+                    </td>
+                </tr>
+                <!--役職-->
+                <tr>
+                    <th>役職</th>
+                    <td><input type='radio' id='grd1' name='grade' value='1'<?php if($grade==1){echo "checked";}?>><label for='grd1'>事業部長</label>
+                        <input type='radio' id='grd2' name='grade' value='2'<?php if($grade==2){echo "checked";}?>><label for='grd2'>部長</label>
+                        <input type='radio' id='grd3' name='grade' value='3'<?php if($grade==3){echo "checked";}?>><label for='grd3'>チームリーダー</label>
+                        <input type='radio' id='grd4' name='grade' value='4'<?php if($grade==4){echo "checked";}?>><label for='grd4'>リーダー</label>
+                        <input type='radio' id='grd5' name='grade' value='5'<?php if($grade==5){echo "checked";}?>><label for='grd5'>メンバー</label>
                     </td>
                 </tr>
 
@@ -82,11 +105,10 @@
 
         <pre>
         <?php
-        var_dump($result);
+        //var_dump($result);
         ?>
         </pre>
-        <a href="./detail01.php"> <input type=submit value=" 完了 "></a>
+        <input type="button" value="完了" onclick="disp(<?php echo $id;?>)">
         <input type=reset value=" リセット ">
-        <input type="hidden" value="119" name="member_ID">
     </body>
 </html>

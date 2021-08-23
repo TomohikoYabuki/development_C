@@ -6,7 +6,7 @@
     <title>情報詳細画面</title>
     </head>
     <script type="text/javascript">
-        function goDel(ID){
+        function goDel(id){
             if(window.confirm('削徐を行います。よろしいですか？')){
                 location.href = "./delete01.php?member_ID=" + id;
             }
@@ -43,6 +43,6 @@
         ?>
 
             <a href="./entry_update01.php?member_ID=<?php echo $id;?>"><input type=submit value="編集"></a>
-            <input type="button" value="削除" onclick="goDel(ID);">
+            <input type="button" value="削除" onclick="goDel(<?php echo $id;?>);">
     </body>
 </html>

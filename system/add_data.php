@@ -84,7 +84,5 @@
                 echo "新規登録に失敗しました。";
             }
       ?>
-      <input type="button" value="登録" onclick="check()">
-      <input type="reset" value="リセット">
-  </body>
+        </body>
  </html>
