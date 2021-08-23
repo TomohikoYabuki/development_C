@@ -17,12 +17,14 @@
             <table border="1" style="border-collapse:collapse;">
                 <!--名前検索フォーム-->
                 <tr>
-                    <td>名前</td>
-                    <td><input type="text" name="namae" size="30"></td>
+                    <th>名前</th>
+                    <td>
+                        <input type="text" name="namae" size="30" value="<?php echo $_GET['namae']?>">
+                    </td>
                 </tr>
                 <!--性別検索フォーム-->
                 <tr>
-                    <td>性別</td>
+                    <th>性別</th>
                     <td>
                         <select name="gender">
                             <option value="0">すべて</option>
@@ -32,7 +34,7 @@
                 </tr>
                 <tr>
                 <!--部署検索フォーム-->
-                    <td>部署</td>
+                    <th>部署</th>
                     <td>
                         <select name="section">
                             <option value="0">すべて</option>
@@ -45,7 +47,7 @@
                 </tr>
                 <!--役職検索フォーム-->
                 <tr>
-                    <td>役職</td>
+                    <th>役職</th>
                     <td>
                         <select name="grade">
                         <option value="0">すべて
@@ -79,26 +81,20 @@
 
             if (isset($_GET['namae']) && !empty($_GET['namae'])) {
                 $where_str .= " AND member.name LIKE '%" . $_GET['namae'] . "%'";
-                //$name = $_POST['namae'];
             }
             if (isset($_GET['gender']) && !empty($_GET['gender'])) {
                 $where_str .= " AND member.seibetu = '" . $_GET['gender'] . "'";
-                //$gender = $_POST['gender'];
             }
             if (isset($_GET['section']) && !empty($_GET['section'])) {
                 $where_str .= " AND member.section_ID = '" . $_GET['section'] . "'";
-                //$gender = $_POST['section'];
             }
             if (isset($_GET['grade']) && !empty($_GET['grade'])) {
                 $where_str .= " AND member.grade_ID = '" . $_GET['grade'] . "'";
-                //$grade = $_POST['grade'];
             }
 
-            //$query_str = "SELECT * FROM member WHERE 1";
 
             $query_str .= $where_str;
 
-            //echo $query_str;
 
             $sql = $pdo->prepare($query_str);
             $sql->execute();
