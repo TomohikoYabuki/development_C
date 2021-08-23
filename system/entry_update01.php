@@ -51,13 +51,32 @@
                 <!--名前-->
                 <tr>
                     <td>名前</td>
-                    <td><input type="text" name="namae" size="30"></td>
+                    <td><input type="text" name="namae" size="30" value="<?php echo $name;?>"></td>
                 </tr>
                 <!--出身地-->
                 <tr>
                     <th>出身地</th>
-                    <td></td>
+                    <td>
+                        <select name="pref">
+                            <option hidden value="0"><?php echo $pref_array[$pref];?></option>
+                            <?php
+                                for($i=1; $i<=47; $i++){
+                                    echo "<option value=". $i. ">" . $pref_array[$i] . "</option>";
+                                }
+                            ?>
+                        </select>
+                    </td>
                 </tr>
+                <!--性別-->
+                <tr>
+                    <th>性別</th>
+                    <td>
+                        <label><input type="radio" name="gender" value="1" checked>男</label>
+                        <label><input type="radio" name="gender" value="2">女</label>
+                        
+                    </td>
+                </tr>
+
             </table>
         </form>
 
