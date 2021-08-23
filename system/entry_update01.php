@@ -73,8 +73,25 @@
                     <td>
                         <label><input type="radio" name="gender" value="1" checked>男</label>
                         <label><input type="radio" name="gender" value="2">女</label>
-                        
+                        <?php
+                            echo $gender;
+                        ?>
                     </td>
+                </tr>
+                <!--年齢-->
+                <tr>
+                    <th>年齢</th>
+                        <td><input type="number" name="age" value="20" max="99" min="1" required> 才</td>
+                </tr>
+                <!--所属部署-->
+                <tr>
+                    <th>所属部署</th>
+                    <td><input type='radio' id='sec1' name='section' value='1' checked ><label for='sec1'>第一事業部</label><input type='radio' id='sec2' name='section01' value='2'><label for='sec2'>第二事業部</label><input type='radio' id='sec3' name='section01' value='3'><label for='sec3'>営業</label><input type='radio' id='sec4' name='section01' value='4'><label for='sec4'>総務</label><input type='radio' id='sec5' name='section01' value='5'><label for='sec5'>人事</label>            </td>
+                </tr>
+                <!--役職-->
+                <tr>
+                    <th>役職</th>
+                    <td><input type='radio' id='grd1' name='grade01' value='1' checked ><label for='grd1'>事業部長</label><input type='radio' id='grd2' name='grade01' value='2'><label for='grd2'>部長</label><input type='radio' id='grd3' name='grade01' value='3'><label for='grd3'>チームリーダー</label><input type='radio' id='grd4' name='grade01' value='4'><label for='grd4'>リーダー</label><input type='radio' id='grd5' name='grade01' value='5'><label for='grd5'>メンバー</label>            </td>
                 </tr>
 
             </table>
