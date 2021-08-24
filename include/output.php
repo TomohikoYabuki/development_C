@@ -1,5 +1,4 @@
 <?php
-
     include("../include/staticdatas.php");
     echo "<table>";
 
@@ -12,5 +11,5 @@
       echo "<tr><th>所属部署</th><td>" . $each['section_name'] . "</td></tr>";
       echo "<tr><th>役職</th><td>" . $each['grade_name'] . "</td></tr>";
     }
-    echo "</table>";
+    echo "</table></div>";
 ?>

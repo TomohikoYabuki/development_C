@@ -1,17 +1,19 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="../include/style.css">
 <html>
     <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>情報詳細画面</title>
-    </head>
-    <script type="text/javascript">
-        function goDel(id){
-            if(window.confirm('削徐を行います。よろしいですか？')){
-                location.href = "./delete01.php?member_ID=" + id;
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>情報詳細画面</title>
+        <script type="text/javascript">
+            function goDel(id){
+                if(window.confirm('削徐を行います。よろしいですか？')){
+                    location.href = "./delete01.php?member_ID=" + id;
+                }
             }
-        }
-    </script>
+        </script>
+    </head>
+
     <body>
         <?php
             //ファイル読み込み
@@ -37,12 +39,16 @@
               $pref = $each['pref'];
               $gender = $each['seibetu'];
           }
-          //出力ファイル読み込み
-            include("../include/output.php");
-
         ?>
-
-            <a href="./entry_update01.php?member_ID=<?php echo $id;?>"><input type=submit value="編集"></a>
-            <input type="button" value="削除" onclick="goDel(<?php echo $id;?>);">
+        <div class="output" id="tbl-bdr">
+            <?php
+              //出力ファイル読み込み
+              include("../include/output.php");
+            ?>
+        </div>
+        <div class="btn">
+            <a href="./entry_update01.php?member_ID=<?php echo $id;?>"><input class="btn_style" type=submit value="編集"></a>
+            <input class="btn_style" type="button" value="削除" onclick="goDel(<?php echo $id;?>)">
+        </div>
     </body>
 </html>

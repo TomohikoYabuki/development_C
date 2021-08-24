@@ -1,39 +1,117 @@
 @charset "UTF-8";
+* {
+   box-sizing: border-box;
+}
 body{
-    background-color: white;
-    font-family: "Open Sans", sans-serif;
-    font-size: 18px;
-    margin: 0 auto !important;
-    color: #444;
-    max-width: 1200px;
+    margin:0;
+    padding: 0;
+    font-family:"Hiragino Kaku Gothic Pro","ヒラギノ角互 Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #FEFCFB;
+    margin: 100px 0 0 0;
 }
+
 header{
-    /*background:#4C7582;*/
-}
-.h_title {
-    font-size: xx-large;
-    font-weight: bold;
-    vertical-align: bottom;
-    height: 80px;
-}
-.h_menu{
-  /*background:#1b1b2b;*/
-  padding:25px;
-  text-align: right;
-  font-family: 'Oswald', sans-serif;
-  vertical-align: bottom;
-}
-
-.btn{
-  color:#000;
-  background:#4C7582;
-  padding:7px 20px;
-  font-size:12px;
-  text-decoration:none;
-  letter-spacing:2px;
-}
-
-.search{
+    width: 100%;
+    padding: 20px 4% 0px;
+    background-color: #DCE0E0;
+    position: fixed;
+    top: 0;
     display: flex;
-    justify-content: center;
+    align-items: center;
+}
+h1{
+    margin: 10px 100px;
+    padding: 0;
+    font-size: 20px;
+}
+.h_title{
+    text-decoration: none;
+    color: #4b4b4b;
+}
+
+.h_menu{
+    text-decoration: none;
+    color: #4b4b4b;
+}
+.h_menu:hover{
+    text-decoration: underline;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    display: flex;
+}
+li{
+    margin: 0 0 0 15px;
+    font-size: 14px;
+}
+nav{
+    margin: 0 0 0 auto;
+}
+/*検索フォーム*/
+.search{
+    /*background: #333;*/
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px 40px;
+    margin-bottom: 10px;
+}
+.search td{
+    color: #4b4b4b;
+}
+
+/*
+基本ボタン
+*/
+.btn{
+    /*background: #111;*/
+    text-align: center;
+    margin: 10px 0 0 0;
+}
+.btn_style {
+  border: 1.5px solid #d0e0d9;
+  border-radius: 0;
+  background: #FEFCFB;
+  color: #4b4b4b;
+}
+
+.btn_style:hover {
+  color: #FEFCFB;
+  background: #d0e0d9;
+}
+.table{
+    /*background: #888;*/
+    margin: 0 0 0 220px;
+}
+
+/*
+出力テーブル
+*/
+.output{
+    /*background: #999;*/
+    width: 60%;
+    margin: 0 auto;
+    padding: 10px 40px;
+}
+#tbl-bdr table,#tbl-bdr td,#tbl-bdr th {
+    border-collapse: collapse;
+    border:1px solid #d0e0d9;
+    padding: 4px 12px;
+    color: #4b4b4b;
+}
+
+#tbl-bdr table {
+  width:100%;
+}
+
+#tbl-bdr th {
+  background-color: #d0e0d9;
+  /*width: 30%;*/
+}
+/*
+index
+*/
+.in_out_res{
+    color: #4b4b4b;
 }
