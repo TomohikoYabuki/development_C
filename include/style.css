@@ -1,1 +1,39 @@
 @charset "UTF-8";
+body{
+    background-color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    margin: 0 auto !important;
+    color: #444;
+    max-width: 1200px;
+}
+header{
+    /*background:#4C7582;*/
+}
+.h_title {
+    font-size: xx-large;
+    font-weight: bold;
+    vertical-align: bottom;
+    height: 80px;
+}
+.h_menu{
+  /*background:#1b1b2b;*/
+  padding:25px;
+  text-align: right;
+  font-family: 'Oswald', sans-serif;
+  vertical-align: bottom;
+}
+
+.btn{
+  color:#000;
+  background:#4C7582;
+  padding:7px 20px;
+  font-size:12px;
+  text-decoration:none;
+  letter-spacing:2px;
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+}

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="../include/style.css">
 <html>
     <head>
         <meta charset='utf-8'>
@@ -11,56 +12,59 @@
             include("../include/DB_access.php");
             include("../include/header.html");
         ?>
-        <hr>
-        <!--フォーム-->
-        <form method='get' action='index.php'>
-            <table border="1" style="border-collapse:collapse;">
-                <!--名前検索フォーム-->
-                <tr>
-                    <td>名前</td>
-                    <td><input type="text" name="namae" size="30"></td>
-                </tr>
-                <!--性別検索フォーム-->
-                <tr>
-                    <td>性別</td>
-                    <td>
-                        <select name="gender">
-                            <option value="0">すべて</option>
-                            <option value="1">男</option>
-                            <option value="2">女</
-                    </td>
-                </tr>
-                <tr>
-                <!--部署検索フォーム-->
-                    <td>部署</td>
-                    <td>
-                        <select name="section">
-                            <option value="0">すべて</option>
-                            <option value="1">第一事業部</option>
-                            <option value="2">第二事業部</option>
-                            <option value="3">営業</option>
-                            <option value="4">総務</option>
-                            <option value="5">人事</option>
-                    </td>
-                </tr>
-                <!--役職検索フォーム-->
-                <tr>
-                    <td>役職</td>
-                    <td>
-                        <select name="grade">
-                        <option value="0">すべて
-                        <option value="1">事業部長
-                        <option value="2">部長
-                        <option value="3">チームリーダー
-                        <option value="4">リーダー
-                        <option value="5">メンバー
-                    </td>
-                </tr>
-            </table><br>
-            <!--基本ボタン-->
-            <input type="submit" value="検索">　
-            <input type="reset" value="リセットする" />
-        </form>
+        <div class="search">
+            <!--フォーム-->
+            <form method='get' action='index.php'>
+                <table border="1" style="border-collapse:collapse;">
+                    <!--名前検索フォーム-->
+                    <tr>
+                        <th>名前</th>
+                        <td>
+                            <input type="text" name="namae" size="30" value="<?php echo $_GET['namae']?>">
+                        </td>
+                    </tr>
+                    <!--性別検索フォーム-->
+                    <tr>
+                        <th>性別</th>
+                        <td>
+                            <select name="gender">
+                                <option value="0">すべて</option>
+                                <option value="1">男</option>
+                                <option value="2">女</
+                        </td>
+                    </tr>
+                    <tr>
+                    <!--部署検索フォーム-->
+                        <th>部署</th>
+                        <td>
+                            <select name="section">
+                                <option value="0">すべて</option>
+                                <option value="1">第一事業部</option>
+                                <option value="2">第二事業部</option>
+                                <option value="3">営業</option>
+                                <option value="4">総務</option>
+                                <option value="5">人事</option>
+                        </td>
+                    </tr>
+                    <!--役職検索フォーム-->
+                    <tr>
+                        <th>役職</th>
+                        <td>
+                            <select name="grade">
+                            <option value="0">すべて
+                            <option value="1">事業部長
+                            <option value="2">部長
+                            <option value="3">チームリーダー
+                            <option value="4">リーダー
+                            <option value="5">メンバー
+                        </td>
+                    </tr>
+                </table><br>
+                <!--基本ボタン-->
+                <input type="submit" value="検索">　
+                <input type="reset" value="リセットする">
+            </div>
+            </form>
         <hr>
 
         <!--php_DB-->
@@ -79,26 +83,20 @@
 
             if (isset($_GET['namae']) && !empty($_GET['namae'])) {
                 $where_str .= " AND member.name LIKE '%" . $_GET['namae'] . "%'";
-                //$name = $_POST['namae'];
             }
             if (isset($_GET['gender']) && !empty($_GET['gender'])) {
                 $where_str .= " AND member.seibetu = '" . $_GET['gender'] . "'";
-                //$gender = $_POST['gender'];
             }
             if (isset($_GET['section']) && !empty($_GET['section'])) {
                 $where_str .= " AND member.section_ID = '" . $_GET['section'] . "'";
-                //$gender = $_POST['section'];
             }
             if (isset($_GET['grade']) && !empty($_GET['grade'])) {
                 $where_str .= " AND member.grade_ID = '" . $_GET['grade'] . "'";
-                //$grade = $_POST['grade'];
             }
 
-            //$query_str = "SELECT * FROM member WHERE 1";
 
             $query_str .= $where_str;
 
-            //echo $query_str;
 
             $sql = $pdo->prepare($query_str);
             $sql->execute();
@@ -109,12 +107,12 @@
             echo "検索結果：" . $count_res . "件";
             ?>
             <!--テーブル-->
-            <table border="3" style="border-collapse:collapse;">
+            <table border="1" style="border-collapse:collapse;">
             <tr>
-                <th bgcolor='#add8e6'>社員ID</th>
-                <th bgcolor='#add8e6'>名前</th>
-                <th bgcolor='#add8e6'>部署</th>
-                <th bgcolor='#add8e6'>役職</th>
+                <th>社員ID</th>
+                <th>名前</th>
+                <th>部署</th>
+                <th>役職</th>
             </tr>
 
             <?php
