@@ -15,17 +15,17 @@
         <div class="search">
             <!--フォーム-->
             <form method='get' action='index.php'>
-                <table border="1" style="border-collapse:collapse;">
+                <table border="0" style="border-collapse:collapse;">
                     <!--名前検索フォーム-->
                     <tr>
-                        <th>名前</th>
+                        <td>名前：</td>
                         <td>
                             <input type="text" name="namae" size="30" value="<?php echo $_GET['namae']?>">
                         </td>
                     </tr>
                     <!--性別検索フォーム-->
                     <tr>
-                        <th>性別</th>
+                        <td>性別：</td>
                         <td>
                             <select name="gender">
                                 <option value="0">すべて</option>
@@ -35,7 +35,7 @@
                     </tr>
                     <tr>
                     <!--部署検索フォーム-->
-                        <th>部署</th>
+                        <td>部署：</td>
                         <td>
                             <select name="section">
                                 <option value="0">すべて</option>
@@ -48,7 +48,7 @@
                     </tr>
                     <!--役職検索フォーム-->
                     <tr>
-                        <th>役職</th>
+                        <td>役職：</td>
                         <td>
                             <select name="grade">
                             <option value="0">すべて
@@ -94,9 +94,7 @@
                 $where_str .= " AND member.grade_ID = '" . $_GET['grade'] . "'";
             }
 
-
             $query_str .= $where_str;
-
 
             $sql = $pdo->prepare($query_str);
             $sql->execute();
@@ -104,8 +102,9 @@
             //$count_res=0;
             $count_res=count($result);
 
-            echo "検索結果：" . $count_res . "件";
+            //echo "検索結果：" . $count_res . "件";
             ?>
+            <div class="index_output">
             <!--テーブル-->
             <table border="1" style="border-collapse:collapse;">
             <tr>
@@ -116,6 +115,7 @@
             </tr>
 
             <?php
+            echo "検索結果：" . $count_res . "件";
             if($count_res==0){
                 echo "<tr><td colspan='4' style='text-align: center;'>検索結果なし</td></tr>";
             }else{
@@ -128,7 +128,7 @@
             }
           echo "</table>";
         ?>
-
+    </div>
         </table>
   </body>
 </html>
