@@ -30,7 +30,7 @@
                         <tr>
                             <td>名前：</td>
                             <td>
-                                <input type="text" name="namae" size="30" value="<?php if (isset($_GET['namae']) && !empty($_GET['namae'])){echo $_GET['namae'];}?>">
+                                <input type="text" name="namae" size="30" value="<?php if(isset($_GET['namae']) && !empty($_GET['namae'])){echo $_GET['namae'];}?>">
                             </td>
                         </tr>
                         <!--性別検索フォーム-->
@@ -38,9 +38,9 @@
                             <td>性別：</td>
                             <td>
                                 <select name="gender">
-                                    <option value="0">すべて</option>
-                                    <option value="1">男</option>
-                                    <option value="2">女</option>
+                                    <option value="0"><?php if(isset($_GET['gender']) && !empty($_GET['gender'])){echo $gender_array[$_GET['gender']];}else{echo "すべて";}?></option>
+                                    <option value="1">男性</option>
+                                    <option value="2">女性</option>
                             </td>
                         </tr>
                         <tr>

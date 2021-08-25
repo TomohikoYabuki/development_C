@@ -53,7 +53,7 @@
         #echo $query_str . "<br>";
 
         //実際に使う際はコメントアウトを消す
-         /*
+        /*
         $sql = $pdo->prepare($query_str);
         $sql->execute();
         */

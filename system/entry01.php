@@ -17,7 +17,7 @@
         ?>
       <!--入力フォーム-->
       <!--返すファイル注意-->
-      <form method='post' action='add_data.php' name="entryform">
+      <form method='post' action='add_data.php' name="mainform">
           <div class="output" id="tbl-bdr">
               <table border="1" style="border-collapse:collapse;">
                   <tr>
