@@ -3,14 +3,14 @@ function check(){
     var name_flag=0;
     var pref_flag=0;
     var age_flag=0;
-    var age_value = document.entryform.age.value;
+    var age_value = document.mainform.age.value;
 
     //入力判定
-    if(document.entryform.namae.value==""){
+    if(document.mainform.namae.value==""){
         name_flag=1;
-    }else if(document.entryform.pref.value=="0"){
+    }else if(document.mainform.pref.value=="0"){
         pref_flag=1;
-    }else if(document.entryform.age.value==""){
+    }else if(document.mainform.age.value==""){
         age_flag=1;
     }
 
@@ -31,7 +31,7 @@ function check(){
     }
 
     if(window.confirm('更新を行います。よろしいですか？')){
-        document.entryform.submit();//「OK」の場合はindex.phpに移動
+        document.mainform.submit();//「OK」の場合はindex.phpに移動
     }//else{
         //windows.alert('キャンセルされました');//警告ダイアログ
         //return false;//送信を中止

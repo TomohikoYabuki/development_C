@@ -5,13 +5,14 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>情報編集画面</title>
-    <script type="text/javascript">
-            function disp(id){
+    <script src="../include/check.js"></script>
+    <!--        function disp(id){
             	if(window.confirm('編集を終了しますか？')){
-            		document.updateform.submit();
+            		//document.updateform.submit(id);
+                    location.href="./update02.php?member_ID=" + id;
             	}
             }
-        </script>
+        </script>-->
     </head>
 
     <body>
@@ -40,7 +41,7 @@
                 $section = $each['section_ID'];
             }
         ?>
-        <form method='post' action='update02.php' name="updateform">
+        <form method='post' action='update02.php' name="mainform">
             <div class="output" id="tbl-bdr">
                 <table border="1" style="border-collapse:collapse;">
                     <tr>
@@ -107,8 +108,8 @@
         </form>
 
         <div class="btn">
-            <input class="btn_style" type="button" value="完了" onclick="disp(<?php echo $id;?>)">
-            <input class="btn_style" type=reset value=" リセット ">
+            <input class="btn_style" type="button" value="登録" onclick="check()">
+            <input class="btn_style" type="reset" value="リセット">
         </div>
     </body>
 </html>
