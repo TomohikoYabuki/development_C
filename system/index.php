@@ -30,7 +30,7 @@
                         <tr>
                             <td>名前：</td>
                             <td>
-                                <input type="text" name="namae" size="30" value="<?php echo $_GET['namae']?>">
+                                <input type="text" name="namae" size="30" value="<?php if (isset($_GET['namae']) && !empty($_GET['namae'])){echo $_GET['namae'];}?>">
                             </td>
                         </tr>
                         <!--性別検索フォーム-->
@@ -73,7 +73,7 @@
                 </div>
                 <!--基本ボタン-->
                 <div class="btn">
-                    <input class="btn_style" type="submit" value="登録">
+                    <input class="btn_style" type="submit" value="検索">
                     <input class="btn_style" type="reset" value="リセット">
                 </div>
             </form>

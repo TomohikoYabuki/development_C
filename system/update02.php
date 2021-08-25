@@ -37,8 +37,10 @@
 
     echo $query_str;
 
-    $sql = $pdo->prepare($query_str);
+    /*$sql = $pdo->prepare($query_str);
     $sql->execute();
-    $result = $sql->fetchAll();
+    $result = $sql->fetchAll();*/
+
+    header('Location:detail01.php?member_ID='.$id);
 
 ?>
