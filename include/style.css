@@ -71,15 +71,17 @@ nav{
     margin: 10px 0 0 0;
 }
 .btn_style {
-  border: 1.5px solid #d0e0d9;
+  border: 1.5px solid #95ACB9;
   border-radius: 0;
   background: #FEFCFB;
   color: #4b4b4b;
+  width: 75px;
+  padding: 3px;
 }
 
 .btn_style:hover {
   color: #FEFCFB;
-  background: #d0e0d9;
+  background: #95ACB9;
 }
 .table{
     /*background: #D2B1AA;*/
@@ -91,13 +93,13 @@ nav{
 */
 .output{
     /*background: #999;*/
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
-    padding: 10px 40px;
+    padding: 10px 50px;
 }
 #tbl-bdr table,#tbl-bdr td,#tbl-bdr th {
     border-collapse: collapse;
-    border:1px solid #d0e0d9;
+    border:1px solid #95ACB9;
     padding: 4px 12px;
     color: #4b4b4b;
 }
@@ -107,6 +109,6 @@ nav{
 }
 
 #tbl-bdr th {
-  background-color: #d0e0d9;
+  background-color: #95ACB9;
   /*width: 30%;*/
 }

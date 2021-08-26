@@ -46,7 +46,7 @@
                 <table border="1" style="border-collapse:collapse;">
                     <tr>
                         <th>社員ID</th>
-                        <td><?php echo $id;?></td>
+                        <td><input type="hidden" name="member_id" value="<?php echo $id;?>"><?php echo $id;?></td>
                     </tr>
                     <!--名前-->
                     <tr>

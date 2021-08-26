@@ -53,23 +53,25 @@
         #echo $query_str . "<br>";
 
         //実際に使う際はコメントアウトを消す
-        /*
+
         $sql = $pdo->prepare($query_str);
         $sql->execute();
-        */
 
-        //名前検索で詳細を表示
-        $query_str_02 = "SELECT member.member_ID, member.name, member.pref, member.seibetu, member.age, grade_master.grade_name, section1_master.section_name FROM member LEFT JOIN grade_master ON grade_master.ID = member.grade_ID LEFT JOIN section1_master ON section1_master.ID = member.section_ID WHERE name= '$name'";
+        //var_dump($pdo->lastInsertId());
+        $id = $pdo->lastInsertId();
+
+        //ID検索で詳細を表示
+        $query_str_02 = "SELECT member.member_ID, member.name, member.pref, member.seibetu, member.age, grade_master.grade_name, section1_master.section_name FROM member LEFT JOIN grade_master ON grade_master.ID = member.grade_ID LEFT JOIN section1_master ON section1_master.ID = member.section_ID WHERE member.member_ID= '$id'";
         #echo $query_str_02;
 
         $sql = $pdo->prepare($query_str_02);                // PDOオブジェクトにSQLを渡す
         $sql->execute();                                    // SQLを実行する
         $result = $sql->fetchAll();
-
+/*
         foreach($result as $each){
             $id = $each['member_ID'];
         }
-
+*/
         header('Location:detail01.php?member_ID='.$id);
         exit();
     }else{

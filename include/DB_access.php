@@ -1,5 +1,5 @@
 <?php
-    #DBアクセス
+    #DBアクセスする処理のみ部品化
     $DB_DSN = "mysql:host=localhost; dbname=sishii; charset=utf8";
     $DB_USER = "webaccess";
     $DB_PW = "toMeu4rH";
