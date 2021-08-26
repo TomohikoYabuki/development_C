@@ -21,6 +21,27 @@
             include("../include/DB_access.php");
             include("../include/header.html");
         ?>
+        <?php
+        //初期値判定用
+        if(isset($_GET['gender']) && !empty($_GET['gender'])){
+            $gender_flag=$_GET['gender'];
+        }else{
+            $gender_flag="0";
+        }
+
+        if(isset($_GET['section']) && !empty($_GET['section'])){
+            $section_flag=$_GET['section'];
+        }else{
+            $section_flag="0";
+        }
+
+        if(isset($_GET['grade']) && !empty($_GET['grade'])){
+            $grade_flag=$_GET['grade'];
+        }else{
+            $grade_flag="0";
+        }
+
+        ?>
         <div class="search">
             <!--フォーム-->
             <form method='get' action='index.php' name='searchform'>
@@ -38,9 +59,9 @@
                             <td>性別：</td>
                             <td>
                                 <select name="gender">
-                                    <option value="0"><?php if(isset($_GET['gender']) && !empty($_GET['gender'])){echo $gender_array[$_GET['gender']];}else{echo "すべて";}?></option>
-                                    <option value="1">男性</option>
-                                    <option value="2">女性</option>
+                                    <option value="0"<?php if($gender_flag==0){echo "selected";}?>>すべて</option>
+                                    <option value="1"<?php if($gender_flag==1){echo "selected";}?>>男性</option>
+                                    <option value="2"<?php if($gender_flag==2){echo "selected";}?>>女性</option>
                             </td>
                         </tr>
                         <tr>
@@ -74,7 +95,7 @@
                 <!--基本ボタン-->
                 <div class="btn">
                     <input class="btn_style" type="submit" value="検索">
-                    <input class="btn_style" type="reset" value="リセット">
+                    <input class="btn_style" type="button" value="リセット" onclick=FormReset()
                 </div>
             </form>
         </div>
@@ -133,11 +154,11 @@
                     }else{
                         foreach($result as $each){
                             echo "<tr><td>" . $each['member_ID'] . "</td>";
-                            echo "<td><a href='detail01.php?member_ID=" . $each['member_ID'] . "'>" . $each['name'] . "</a></td>";                                echo "<td>" . $each['section_name'] . "</td>";
+                            echo "<td><a href='detail01.php?member_ID=" . $each['member_ID'] . "'>" . $each['name'] . "</a></td>";
+                            echo "<td>" . $each['section_name'] . "</td>";
                             echo "<td>" . $each['grade_name'] . "</td></tr>";
                         }
                     }
-                    echo "</table>";
                 ?>
             </table>
         </div>
