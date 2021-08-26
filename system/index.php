@@ -69,12 +69,12 @@
                             <td>部署：</td>
                             <td>
                                 <select name="section">
-                                    <option value="0">すべて</option>
-                                    <option value="1">第一事業部</option>
-                                    <option value="2">第二事業部</option>
-                                    <option value="3">営業</option>
-                                    <option value="4">総務</option>
-                                    <option value="5">人事</option>
+                                    <option value="0"<?php if($section_flag==0){echo "selected";}?>>すべて</option>
+                                    <option value="1"<?php if($section_flag==1){echo "selected";}?>>第一事業部</option>
+                                    <option value="2"<?php if($section_flag==2){echo "selected";}?>>第二事業部</option>
+                                    <option value="3"<?php if($section_flag==3){echo "selected";}?>>営業</option>
+                                    <option value="4"<?php if($section_flag==4){echo "selected";}?>>総務</option>
+                                    <option value="5"<?php if($section_flag==5){echo "selected";}?>>人事</option>
                             </td>
                         </tr>
                         <!--役職検索フォーム-->
@@ -82,12 +82,12 @@
                             <td>役職：</td>
                             <td>
                                 <select name="grade">
-                                <option value="0">すべて
-                                <option value="1">事業部長
-                                <option value="2">部長
-                                <option value="3">チームリーダー
-                                <option value="4">リーダー
-                                <option value="5">メンバー
+                                <option value="0"<?php if($grade_flag==0){echo "selected";}?>>すべて
+                                <option value="1"<?php if($grade_flag==1){echo "selected";}?>>事業部長
+                                <option value="2"<?php if($grade_flag==2){echo "selected";}?>>部長
+                                <option value="3"<?php if($grade_flag==3){echo "selected";}?>>チームリーダー
+                                <option value="4"<?php if($grade_flag==4){echo "selected";}?>>リーダー
+                                <option value="5"<?php if($grade_flag==5){echo "selected";}?>>メンバー
                             </td>
                         </tr>
                     </table>
