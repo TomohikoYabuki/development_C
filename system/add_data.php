@@ -65,9 +65,11 @@
         $sql = $pdo->prepare($query_str_02);                // PDOオブジェクトにSQLを渡す
         $sql->execute();                                    // SQLを実行する
         $result = $sql->fetchAll();
+
         foreach($result as $each){
             $id = $each['member_ID'];
         }
+
         header('Location:detail01.php?member_ID='.$id);
         exit();
     }else{
