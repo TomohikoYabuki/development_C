@@ -42,11 +42,11 @@
         }
 
         ?>
-        <div class="search">
+        <!--<div class="search">-->
             <!--フォーム-->
             <form method='get' action='index.php' name='searchform'>
                 <div class="table">
-                    <table border="0" style="border-collapse:collapse;">
+                    <table border="0" style="border-collapse:collapse;" class="search">
                         <!--名前検索フォーム-->
                         <tr>
                             <td>名前：</td>
@@ -91,7 +91,7 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                <!--</div>-->
                 <!--基本ボタン-->
                 <div class="btn">
                     <input class="btn_style" type="submit" value="検索">
