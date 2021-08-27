@@ -108,7 +108,7 @@
         </form>
 
         <div class="btn">
-            <input class="btn_style" type="button" value="登録" onclick="check()">
+            <input class="btn_style" type="button" value="更新" onclick="check()">
             <input class="btn_style" type="reset" value="リセット">
         </div>
     </body>

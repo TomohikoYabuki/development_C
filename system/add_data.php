@@ -21,7 +21,7 @@
     $grade=0;
 
     //入力判定
-    if(isset($_POST['namae'])){
+    if(isset($_POST['namae'])&& !empty($_POST['namae'])){
         $name_flag=1;
         $name = $_POST['namae'];
     }

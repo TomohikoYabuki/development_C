@@ -52,12 +52,13 @@ nav{
 /*検索フォーム*/
 .search{
     /*background: #999;*/
-    width: 80%;
-    margin: 0 280px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 10px 40px;
     margin-bottom: 10px;
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
 }
 .search td{
     color: #4b4b4b;
