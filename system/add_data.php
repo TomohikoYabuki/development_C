@@ -49,7 +49,7 @@
     //入力が揃っていればSQL文を実行
     if(($name_flag==1) && ($pref_flag==1) && ($gender_flag==1) && ($age_flag==1) && ($section_flag==1) && ($grade_flag==1)){
         //SQL文
-        $query_str = "INSERT INTO `member` (`member_ID`, `name`, `pref`, `seibetu`, `age`, `section_ID`, `grade_ID`) VALUES (NULL, '$name','$pref','$gender','$age', '$section','$grade');";
+        $query_str = "INSERT INTO `member` (member.member_ID, member.name, member.pref, member.seibetu, member.age, member.section_ID, member.grade_ID) VALUES (NULL, '$name','$pref','$gender','$age', '$section','$grade');";
         #echo $query_str . "<br>";
 
         //実際に使う際はコメントアウトを消す
