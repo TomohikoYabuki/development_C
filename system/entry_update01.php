@@ -61,8 +61,8 @@
                                 <!--初期値設定-->
                                 <option hidden value="<?php echo $pref;?>"><?php echo $pref_array[$pref];?></option>
                                 <?php
-                                    for($i=1; $i<=47; $i++){
-                                        echo "<option value=". $i. ">" . $pref_array[$i] . "</option>";
+                                    foreach($pref_array as $key => $value){
+                                        echo "<option value=". $key .">" . $value . "</option>";
                                     }
                                 ?>
                             </select>

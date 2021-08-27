@@ -15,6 +15,11 @@
         include("../include/DB_access.php");
         include("../include/header.html");
         ?>
+        <pre>
+            <?php
+            //var_dump($section_array);
+            ?>
+        </pre>
       <!--入力フォーム-->
       <!--返すファイル注意-->
       <form method='post' action='add_data.php' name="mainform">
@@ -31,8 +36,8 @@
                           <select name="pref">
                               <option hidden value="0">都道府県</option>
                               <?php
-                                  for($i=1; $i<=47; $i++){
-                                      echo "<option value=". $i. ">" . $pref_array[$i] . "</option>";
+                                  foreach($pref_array as $key => $value){
+                                      echo "<option value=". $key .">" . $value . "</option>";
                                   }
                               ?>
                           </select>
@@ -43,8 +48,17 @@
                   <tr>
                       <th>性別</th>
                       <td>
-                          <label><input type="radio" name="gender" value="1" checked>男</label>
-                          <label><input type="radio" name="gender" value="2">女</label>
+                          <?php
+                              foreach($gender_array as $key => $value){
+                                  echo "<label><input type='radio' name='gender' value='". $key ."'";
+                                  if($key==1){
+                                      echo " checked";
+                                  }
+                                  echo ">" . $value . "</label>";
+                              }
+                          ?><!--
+                          <label><input type='radio' name='gender' value='1' checked>男</label>
+                          <label><input type='radio' name='gender' value="2">女</label>-->
                       </td>
                   </tr>
 
@@ -57,23 +71,30 @@
                   <tr>
                       <th>所属部署</th>
                       <td>
-
-                          <label><input type="radio" name="section" value="1" checked>第一事業部</label>
-                          <label><input type="radio" name="section" value="2">第二事業部</label>
-                          <label><input type="radio" name="section" value="3">営業</label>
-                          <label><input type="radio" name="section" value="4">総務</label>
-                          <label><input type="radio" name="section" value="5">人事</label>
-                      </td>
+                          <?php
+                              foreach ($section_array as $each){
+                                  echo "<label><input type='radio' name='gender' value='". $each['ID'] ."'";
+                                  if($each['ID']==1){
+                                      echo " checked";
+                                  }
+                                  echo ">" . $each['section_name'] . "</label>";
+                              }
+                          ?>
+                    </td>
                   </tr>
                   <!--役職入力フォームここから-->
                   <tr>
                       <th>役職</th>
                       <td>
-                          <label><input type="radio" name="grade" value="1" checked>事業部長</label>
-                          <label><input type="radio" name="grade" value="2">部長</label>
-                          <label><input type="radio" name="grade" value="3">チームリーダー</label>
-                          <label><input type="radio" name="grade" value="4">リーダー</label>
-                          <label><input type="radio" name="grade" value="5">メンバー</label>
+                          <?php
+                              foreach ($grade_array as $each){
+                                  echo "<label><input type='radio' name='gender' value='". $each['ID'] ."'";
+                                  if($each['ID']==1){
+                                      echo " checked";
+                                  }
+                                  echo ">" . $each['grade_name'] . "</label>";
+                              }
+                          ?>
                       </td>
                   </tr>
               </table>
