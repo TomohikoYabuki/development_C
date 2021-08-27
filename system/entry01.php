@@ -73,7 +73,7 @@
                       <td>
                           <?php
                               foreach ($section_array as $each){
-                                  echo "<label><input type='radio' name='gender' value='". $each['ID'] ."'";
+                                  echo "<label><input type='radio' name='section' value='". $each['ID'] ."'";
                                   if($each['ID']==1){
                                       echo " checked";
                                   }
@@ -88,7 +88,7 @@
                       <td>
                           <?php
                               foreach ($grade_array as $each){
-                                  echo "<label><input type='radio' name='gender' value='". $each['ID'] ."'";
+                                  echo "<label><input type='radio' name='grade' value='". $each['ID'] ."'";
                                   if($each['ID']==1){
                                       echo " checked";
                                   }
