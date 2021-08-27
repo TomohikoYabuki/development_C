@@ -51,7 +51,7 @@ nav{
 }
 /*検索フォーム*/
 .search{
-    width: 50%;
+    width: 70%;
     margin: 0 auto;
     padding: 10px 40px;
     margin-bottom: 10px;
@@ -88,7 +88,7 @@ nav{
 */
 .output{
     /*background: #999;*/
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     padding: 10px 40px;
 }

@@ -73,6 +73,7 @@
         }
 */
         header('Location:detail01.php?member_ID='.$id);
+
         exit();
     }else{
         echo "新規登録に失敗しました。";
