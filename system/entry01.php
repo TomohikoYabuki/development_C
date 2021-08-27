@@ -81,7 +81,10 @@
 
           <!--基本ボタン-->
           <div class="btn">
-              <!--<input type="submit" value="submit">-->
+              <!--
+                登録を押すとcheck()の関数に飛ぶ
+                check()はcheck.jsにある
+                -->
               <input class="btn_style" type="button" value="登録" onclick="check()">
               <input class="btn_style" type="reset" value="リセット">
           </div>

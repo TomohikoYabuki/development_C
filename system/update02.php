@@ -10,7 +10,7 @@
     ①UPDATE member SET
     ②name = 'なまえ', pref = '出身地', seibetu = '性別', age = '年齢', section_ID = '所属部署', grade_ID = 'グレード'
     ③WHERE member.member_ID = ”ID”
-    三つに分解して後から合体
+    三つに分解して後から合体する
     */
     /*①*/$query_str="UPDATE member SET ";
     /*②*/$where_str = "";
