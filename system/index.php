@@ -75,6 +75,7 @@
                                     <option value="3"<?php if($section_flag==3){echo "selected";}?>>営業</option>
                                     <option value="4"<?php if($section_flag==4){echo "selected";}?>>総務</option>
                                     <option value="5"<?php if($section_flag==5){echo "selected";}?>>人事</option>
+                                </selected>
                             </td>
                         </tr>
                         <!--役職検索フォーム-->
@@ -110,10 +111,6 @@
                         WHERE 1=1";
 
             $where_str = "";
-            $name = "";
-            $gender = "";
-            $section = "";
-            $grade = "";
 
             if (isset($_GET['namae']) && !empty($_GET['namae'])) {
                 $where_str .= " AND member.name LIKE '%" . $_GET['namae'] . "%'";
