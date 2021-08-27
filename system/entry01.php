@@ -51,7 +51,7 @@
                   <!--年齢入力フォーム-->
                   <tr>
                       <th>年齢</th>
-                      <td><input type="num" name="age" size="2">才</td>
+                      <td><input type="number" name="age" value="<?php echo $age;?>" max="99" min="1" required> 才</td>
                   </tr>
                   <!--所属部署入力フォームここから-->
                   <tr>
