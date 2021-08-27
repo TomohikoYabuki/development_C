@@ -15,11 +15,20 @@
         include("../include/DB_access.php");
         include("../include/header.html");
         ?>
-        <pre>
-            <?php
+        <?php
             //var_dump($section_array);
-            ?>
-        </pre>
+            $section_sql = "SELECT * FROM section1_master";
+
+            $sql = $pdo->prepare($section_sql);
+            $sql->execute();
+            $section_array = $sql->fetchAll();
+
+            $grade_sql = "SELECT * FROM grade_master";
+
+            $sql = $pdo->prepare($grade_sql);
+            $sql->execute();
+            $grade_array = $sql->fetchAll();
+        ?>
       <!--入力フォーム-->
       <!--返すファイル注意-->
       <form method='post' action='add_data.php' name="mainform">

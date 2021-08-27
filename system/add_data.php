@@ -20,6 +20,8 @@
     $section="";
     $grade="";
 
+    //SQL文
+    $query_str = "INSERT INTO member (member.member_ID, member.name, member.pref, member.seibetu, member.age, member.section_ID, member.grade_ID) VALUES (NULL,)";
     //入力判定
     if(isset($_POST['namae'])&& !empty($_POST['namae'])){
         $name_flag=1;
