@@ -13,12 +13,12 @@
     $grade_flag=0;
 
     //代入用変数
-    $name=0;
-    $pref=0;
-    $gender=0;
-    $age=0;
-    $section=0;
-    $grade=0;
+    $name="";
+    $pref="";
+    $gender="";
+    $age="";
+    $section="";
+    $grade="";
 
     //入力判定
     if(isset($_POST['namae'])&& !empty($_POST['namae'])){
