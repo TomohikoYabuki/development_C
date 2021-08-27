@@ -31,6 +31,7 @@
                              LEFT JOIN section1_master ON section1_master.ID = member.section_ID
                              WHERE member_ID = '$id'";
             #echo $query_str_02;
+
             $sql = $pdo->prepare($query_str_02);                // PDOオブジェクトにSQLを渡す
             $sql->execute();                                    // SQLを実行する
             $result = $sql->fetchAll();
@@ -39,16 +40,20 @@
               $pref = $each['pref'];
               $gender = $each['seibetu'];
           }
+
         ?>
         <div class="output" id="tbl-bdr">
             <?php
-              //出力ファイル読み込み
-              include("../include/output.php");
+            //出力ファイル読み込み
+            include("../include/output.php");
+            //header('Location:../incldue/error.php);
             ?>
         </div>
+
         <div class="btn">
             <a href="./entry_update01.php?member_ID=<?php echo $id;?>"><input class="btn_style" type=submit value="編集"></a>
             <input class="btn_style" type="button" value="削除" onclick="goDel(<?php echo $id;?>)">
         </div>
+
     </body>
 </html>
