@@ -13,59 +13,64 @@
     $grade_flag=0;
 
     //代入用変数
+    /*
     $name="";
     $pref="";
     $gender="";
     $age="";
     $section="";
     $grade="";
-
+*/
     //SQL文
-    $query_str = "INSERT INTO member (member.member_ID, member.name, member.pref, member.seibetu, member.age, member.section_ID, member.grade_ID) VALUES (NULL,)";
+    $query_str = "INSERT INTO `member` (member.member_ID, member.name, member.pref, member.seibetu, member.age, member.section_ID, member.grade_ID) VALUES (NULL";
+    $add_sql = ");";
     //入力判定
     if(isset($_POST['namae'])&& !empty($_POST['namae'])){
         $name_flag=1;
-        $name = $_POST['namae'];
+        //$name = $_POST['namae'];
+        $query_str .= ", '". $_POST['namae'] ."'";
     }
     if(isset($_POST['pref']) && !empty($_POST['pref'])){
         $pref_flag=1;
-        $pref = $_POST['pref'];
+        $query_str .= ", '". $_POST['pref'] ."'";
     }
     if(isset($_POST['gender']) && !empty($_POST['gender'])){
         $gender_flag=1;
-        $gender = $_POST['gender'];
+        $query_str .= ", '". $_POST['gender'] ."'";
     }
     if(isset($_POST['age']) && !empty($_POST['age'])){
         $age_flag=1;
-        $age = $_POST['age'];
+        $query_str .= ", '". $_POST['age'] ."'";
     }
     if(isset($_POST['section']) && !empty($_POST['section'])){
         $section_flag=1;
-        $section = $_POST['section'];
+        $query_str .= ", '". $_POST['section'] ."'";
     }
     if(isset($_POST['grade']) && !empty($_POST['grade'])){
         $grade_flag=1;
-        $grade = $_POST['grade'];
+        $query_str .= ", '". $_POST['grade'] ."'";
     }
 
     //入力が揃っていればSQL文を実行
     if(($name_flag==1) && ($pref_flag==1) && ($gender_flag==1) && ($age_flag==1) && ($section_flag==1) && ($grade_flag==1)){
         //SQL文
-        $query_str = "INSERT INTO `member` (member.member_ID, member.name, member.pref, member.seibetu, member.age, member.section_ID, member.grade_ID) VALUES (NULL, '$name','$pref','$gender','$age', '$section','$grade');";
-        #echo $query_str . "<br>";
+        //$query_str = "INSERT INTO 'member' (member.member_ID, member.name, member.pref, member.seibetu, member.age, member.section_ID, member.grade_ID) VALUES (NULL, '$name','$pref','$gender','$age', '$section','$grade');";
 
-        //実際に使う際はコメントアウトを消す
+        $query_str .= $add_sql;
+        echo $query_str;
+        //echo $name;
+        try{
+            $sql = $pdo->prepare($query_str);
+            $sql->execute();
 
-        $sql = $pdo->prepare($query_str);
-        $sql->execute();
+            $id = $pdo->lastInsertId('member_ID');
+            header('Location:detail01.php?member_ID='.$id);
+            
+        }catch(PDOException $e){
+            header('Location:../include/error.php');
+        }
 
-        //var_dump($pdo->lastInsertId());
-        $id = $pdo->lastInsertId();
-
-        header('Location:detail01.php?member_ID='.$id);
-
-        exit();
     }else{
-        header('Location:../include.php');
+        header('Location:../include/error.php');
     }
 ?>
