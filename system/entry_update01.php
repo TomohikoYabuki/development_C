@@ -6,13 +6,11 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>情報編集画面</title>
     <script src="../include/check.js"></script>
-    <!--        function disp(id){
-            	if(window.confirm('編集を終了しますか？')){
-            		//document.updateform.submit(id);
-                    location.href="./update02.php?member_ID=" + id;
-            	}
-            }
-        </script>-->
+    <script>
+    function editFormReset() {
+        document.mainform.reset();
+    }
+</script>
     </head>
 
     <body>
@@ -44,10 +42,10 @@
             $sql->execute();                                    // SQLを実行する
             $result = $sql->fetchAll();
                 if(empty($result)){
-                    header('Location:error.php');
+                    header('Location:./include/error.php');
                 }
         }catch(PDOException $e){
-                header('Location:error.php');
+                header('Location:./include/error.php');
             }
 
         ?>
@@ -144,7 +142,7 @@
 
         <div class="btn">
             <input class="btn_style" type="button" value="更新" onclick="check()">
-            <input class="btn_style" type="reset" value="リセット">
+            <input class="btn_style" type="button" value="リセット" onclick="editFormReset()">
         </div>
     </body>
 </html>
