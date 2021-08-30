@@ -31,11 +31,17 @@
                                  FROM member LEFT JOIN grade_master ON grade_master.ID = member.grade_ID
                                  LEFT JOIN section1_master ON section1_master.ID = member.section_ID
                                  WHERE member_ID = '$id'";
-                #echo $query_str_02;
 
-                $sql = $pdo->prepare($query_str_02);                // PDOオブジェクトにSQLを渡す
-                $sql->execute();                                    // SQLを実行する
-                $result = $sql->fetchAll();
+                try{
+                    $sql = $pdo->prepare($query_str_02);                // PDOオブジェクトにSQLを渡す
+                    $sql->execute();                                    // SQLを実行する
+                    $result = $sql->fetchAll();
+                }catch(PDOException $e){
+                    header('Location:../include/error.php');
+                }
+
+                //var_dump($result);
+                //echo $result['name'];
 
                 if(isset($result) && !empty($result)){
                     foreach($result as $each){
@@ -51,18 +57,8 @@
           }else{
               header('Location:../include/error.php');
           }
-
-/*
-            $sql = $pdo->prepare($query_str_02);                // PDOオブジェクトにSQLを渡す
-            $sql->execute();                                    // SQLを実行する
-            $result = $sql->fetchAll();
-
-            foreach($result as $each){
-              $pref = $each['pref'];
-              $gender = $each['seibetu'];
-          }
-*/
         ?>
+
         <div class="btn">
             <a href="./entry_update01.php?member_ID=<?php echo $id;?>"><input class="btn_style" type=submit value="編集"></a>
             <input class="btn_style" type="button" value="削除" onclick="goDel(<?php echo $id;?>)">
