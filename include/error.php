@@ -9,7 +9,11 @@
         <?php
          include("../include/header.html");
         ?>
-        <p class="error">ページが見つかりません</p>
-        <a href="../system/index.php">TOP画面へ戻る</a>
+        <div class="error">
+            <p>ページが見つかりません</p>
+            <a href="../system/index.php">TOP画面へ戻る</a>
+        </div>
+        <img class="syen" src="../img/syen.png">
+
     </body>
 </html>

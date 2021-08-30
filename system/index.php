@@ -13,6 +13,10 @@
             document.searchform.section.value = "0";
             document.searchform.grade.value = "0";
           }
+
+          function scrollToTop() {
+              scrollTo(0, 0);
+          }
         </script>
     </head>
     <body>
@@ -178,5 +182,6 @@
                 ?>
             </table>
         </div>
+        <div class="toTOP" onclick="scrollToTop()"></div>
   </body>
 </html>

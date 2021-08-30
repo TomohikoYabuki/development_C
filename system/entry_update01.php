@@ -42,10 +42,10 @@
             $sql->execute();                                    // SQLを実行する
             $result = $sql->fetchAll();
                 if(empty($result)){
-                    header('Location:./include/error.php');
+                    header('Location:../include/error.php');
                 }
         }catch(PDOException $e){
-                header('Location:./include/error.php');
+                header('Location:../include/error.php');
             }
 
         ?>

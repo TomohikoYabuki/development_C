@@ -112,3 +112,46 @@ nav{
   background-color: #d0e0d9;
   /*width: 30%;*/
 }
+
+.toTOP {
+    display:  inline-block;
+    margin: auto;
+    color: #4b4b4b;
+    text-decoration:  none;
+    background-color: #DCE0E0;
+    border-radius: 5px;
+    position:  relative;
+    top: 10px;
+    bottom: 10px;
+    left: 1000px;
+    height: 40px;
+    width: 40px;
+    cursor:pointer;
+}
+
+.toTOP::before {
+    content:  '';
+    width: 10px;
+    height: 10px;
+    display:  block;
+    border-top: solid 2px;
+    border-right: solid 2px;
+    transform: rotate(-45deg);
+    position:  absolute;
+    top: 10px;
+    bottom: 0;
+    left:  0;
+    right:  0;
+    margin:  auto;
+}
+
+/*エラーページ*/
+
+.error{
+    text-align: center;
+}
+.syen{
+    display: block;
+    margin: 0 auto;
+    width: 450px;
+}
