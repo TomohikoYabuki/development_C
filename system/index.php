@@ -129,11 +129,18 @@
 
             $query_str .= $where_str;
 
-            $sql = $pdo->prepare($query_str);
-            $sql->execute();
-            $result = $sql->fetchAll();
-            //$count_res=0;
-            $count_res=count($result);
+            try{
+                $sql = $pdo->prepare($query_str);
+                $sql->execute();
+                $result = $sql->fetchAll();
+                //$count_res=0;
+                $count_res=count($result);
+                    if(empty($result)){
+                        header('Location:error.php');
+                    }
+            }catch(PDOException $e){
+                    header('Location:error.php');
+                }
         ?>
         <div class="output" id="tbl-bdr">
             <a class="in_out_res">検索結果：<?php echo $count_res;?> 件</a>
