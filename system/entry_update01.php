@@ -46,7 +46,6 @@
                 if(empty($result)){
                     header('Location:error.php');
                 }
-
         }catch(PDOException $e){
                 header('Location:error.php');
             }
@@ -77,9 +76,13 @@
                                 <!--初期値設定-->
                                 <option hidden value="<?php echo $pref;?>"><?php echo $pref_array[$result[0]["pref"]];?></option>
                                 <?php
-                                foreach($pref_array as $key => $value){
-                                    echo "<option value=". $key .">" . $value . "</option>";
-                                }
+                                    foreach($pref_array as $key => $value){
+                                        echo "<option value=". $key;
+                                        if($key==$result[0]["pref"]){
+                                            echo " selected";
+                                        }
+                                        echo ">" . $value . "</option>";
+                                    }
                                 ?>
                             </select>
                         </td>
