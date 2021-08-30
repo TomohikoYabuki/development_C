@@ -44,13 +44,11 @@
                 //echo $result['name'];
 
                 if(isset($result) && !empty($result)){
-                    foreach($result as $each){
-                      $pref = $each['pref'];
-                      $gender = $each['seibetu'];?>
+                      $pref = $result[0]['pref'];
+                      $gender = $result[0]['seibetu'];?>
                       <div class="output" id="tbl-bdr">
                           <?php include("../include/output.php");?>
                       </div><?php
-                    }
                 }else{
                     header('Location:../include/error.php');
                 }
