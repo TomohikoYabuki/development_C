@@ -35,7 +35,7 @@
                     header('Location:error.php');
                 }
         }catch(PDOException $e){
-                header('Location:error.php?member_ID='.$id);
+                header('Location:error.php');
             }
         ?>
         <form method='post' action='update02.php' name="mainform">
