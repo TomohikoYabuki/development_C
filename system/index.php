@@ -134,9 +134,6 @@
                 $sql->execute();
                 $result = $sql->fetchAll();
                 $count_res=count($result);
-                if(empty($result)){
-                    header('Location:./include/error.php');
-                }
             }catch(PDOException $e){
                     header('Location:./include/error.php');
                 }
