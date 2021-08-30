@@ -14,15 +14,15 @@
     */
     /*①*/$query_str="UPDATE member SET ";
     /*②*/$where_str = "";
-    /*③*/$add_sql=" WHERE member.member_ID= $id";
+    /*③*/$add_sql="' WHERE member.member_ID= $id";
 
-    /*
+    $where_str .= "name = '" . $_POST['namae'] ."', pref = '" . $_POST['pref'] ."', seibetu = '" . $_POST['gender'] . "', age = '" . $_POST['age'] . "', section_ID = '" . $_POST['section'] . "', grade_ID = '" . $_POST['grade'];
 
     /*SQL文合体*/
     $where_str .= $add_sql;
     $query_str .= $where_str;
 
-    //echo $query_str;
+    echo $query_str;
 
     /*SQL文実行*/
     try{

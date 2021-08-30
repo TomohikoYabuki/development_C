@@ -39,8 +39,13 @@
                 }catch(PDOException $e){
                     header('Location:../include/error.php');
                 }
+                ?>
 
-                //var_dump($result);
+            <pre>
+                <?php //var_dump($result);?>
+            </pre>
+            
+            <?php
                 //echo $result['name'];
 
                 if(isset($result) && !empty($result)){
