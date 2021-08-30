@@ -19,9 +19,13 @@ header{
     align-items: center;
 }
 h1{
-    margin: 10px 100px;
+    margin: 10px 120px;
     padding: 0;
     font-size: 20px;
+}
+.icon{
+    position:relative;
+    top: 3px;
 }
 .h_title{
     text-decoration: none;
