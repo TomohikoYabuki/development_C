@@ -27,18 +27,15 @@
             //名前検索で詳細を表示
             $query_str = "SELECT * FROM member WHERE member_ID = '$id'";
             #echo $query_str_02;
+        try{
             $sql = $pdo->prepare($query_str);                // PDOオブジェクトにSQLを渡す
             $sql->execute();                                    // SQLを実行する
             $result = $sql->fetchAll();
-
-            //$idから取得したデータを変数に格納
-            foreach($result as $each){
-                $name = $each['name'];
-                $pref = $each['pref'];
-                $gender = $each['seibetu'];
-                $age = $each['age'];
-                $grade = $each['grade_ID'];
-                $section = $each['section_ID'];
+                if(empty($result){
+                    header('Location:error.php');
+                }
+        }catch(PDOException $e){
+                header('Location:error.php?member_ID='.$id);
             }
         ?>
         <form method='post' action='update02.php' name="mainform">
@@ -61,8 +58,8 @@
                                 <!--初期値設定-->
                                 <option hidden value="<?php echo $pref;?>"><?php echo $pref_array[$pref];?></option>
                                 <?php
-                                    foreach($pref_array as $key => $value){
-                                        echo "<option value=". $key .">" . $value . "</option>";
+                                    for($i=1; $i<=47; $i++){
+                                        echo "<option value=". $i. ">" . $pref_array[$i] . "</option>";
                                     }
                                 ?>
                             </select>
