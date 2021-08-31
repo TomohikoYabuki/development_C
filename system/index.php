@@ -17,6 +17,7 @@
           function scrollToTop() {
               scrollTo(0, 0);
           }
+
         </script>
     </head>
     <body>
@@ -182,6 +183,6 @@
                 ?>
             </table>
         </div>
-        <div class="toTOP" onclick="scrollToTop()"></div>
+        <div id="pagetop"><a href="#top">Page Top</a></div>
   </body>
 </html>

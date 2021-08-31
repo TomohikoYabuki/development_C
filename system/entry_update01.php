@@ -144,5 +144,6 @@
             <input class="btn_style" type="button" value="更新" onclick="check()">
             <input class="btn_style" type="button" value="リセット" onclick="editFormReset()">
         </div>
+
     </body>
 </html>

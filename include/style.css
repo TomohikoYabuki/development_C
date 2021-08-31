@@ -7,8 +7,9 @@ body{
     font-family:"Hiragino Kaku Gothic Pro","ヒラギノ角互 Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #FEFCFB;
     margin: 100px 0 0 0;
+    scroll-behavior: smooth;
 }
-
+/*ヘッダー*/
 header{
     width: 100%;
     padding: 20px 4% 0px;
@@ -23,6 +24,7 @@ h1{
     padding: 0;
     font-size: 20px;
 }
+/*ヘッダータイトル横アイコン*/
 .icon{
     position:relative;
     top: 3px;
@@ -53,6 +55,28 @@ li{
 nav{
     margin: 0 0 0 auto;
 }
+
+/*フッター*/
+footer {
+  width: 100%;
+  height: 120px;
+  text-align: center;
+  padding: 50px 0;
+  background-color: #DCE0E0;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+.footer-text {
+  color:#4b4b4b;
+}
+.footerFixed{
+    min-height: 120vh;
+    position: relative;
+    padding-bottom: 0px;
+    /*box-sizing: border-box;*/
+}
+
+
 /*検索フォーム*/
 .search{
     /*background: #999;*/
@@ -113,38 +137,6 @@ nav{
   /*width: 30%;*/
 }
 
-.toTOP {
-    display:  inline-block;
-    margin: auto;
-    color: #4b4b4b;
-    text-decoration:  none;
-    background-color: #DCE0E0;
-    border-radius: 5px;
-    position:  relative;
-    top: 10px;
-    bottom: 10px;
-    left: 1000px;
-    height: 40px;
-    width: 40px;
-    cursor:pointer;
-}
-
-.toTOP::before {
-    content:  '';
-    width: 10px;
-    height: 10px;
-    display:  block;
-    border-top: solid 2px;
-    border-right: solid 2px;
-    transform: rotate(-45deg);
-    position:  absolute;
-    top: 10px;
-    bottom: 0;
-    left:  0;
-    right:  0;
-    margin:  auto;
-}
-
 /*エラーページ*/
 
 .error{
@@ -154,4 +146,38 @@ nav{
     display: block;
     margin: 0 auto;
     width: 450px;
+}
+
+/*スクロールボタン*/
+#pagetop {
+    position: fixed;
+    right: 50px;
+    bottom: 10px;
+    text-indent: -9999px;
+}
+#pagetop a {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: #DCE0E0;
+    transition: opacity .6s ease;
+}
+#pagetop a:hover {
+    background: #d0e0d9;
+}
+#pagetop a::before {
+    position: absolute;
+    top: 7px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: auto;
+    content: '';
+    transform: rotate(-45deg);
+    border-top: 1px solid #4b4b4b;
+    border-right: 1px solid #4b4b4b;
 }

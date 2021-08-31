@@ -44,7 +44,7 @@
             <pre>
                 <?php //var_dump($result);?>
             </pre>
-            
+
             <?php
                 //echo $result['name'];
 
@@ -66,6 +66,5 @@
             <a href="./entry_update01.php?member_ID=<?php echo $id;?>"><input class="btn_style" type=submit value="編集"></a>
             <input class="btn_style" type="button" value="削除" onclick="goDel(<?php echo $id;?>)">
         </div>
-
     </body>
 </html>
